@@ -190,21 +190,21 @@ best_valid_loss = float("inf")
 
 metrics = collections.defaultdict(list)
 
-# for epoch in range(n_epochs):
-#     train_loss, train_acc = train_model.train(
-#         train_data_loader, model, criterion, optimizer, device
-#     )
-#     valid_loss, valid_acc = train_model.evaluate(valid_data_loader, model, criterion, device)
-#     metrics["train_losses"].append(train_loss)
-#     metrics["train_accs"].append(train_acc)
-#     metrics["valid_losses"].append(valid_loss)
-#     metrics["valid_accs"].append(valid_acc)
-#     if valid_loss < best_valid_loss:
-#         best_valid_loss = valid_loss
-#         torch.save(model.state_dict(), "lstm.pt")
-#     print(f"epoch: {epoch}")
-#     print(f"train_loss: {train_loss:.3f}, train_acc: {train_acc:.3f}")
-#     print(f"valid_loss: {valid_loss:.3f}, valid_acc: {valid_acc:.3f}")
+for epoch in range(n_epochs):
+    train_loss, train_acc = train_model.train(
+        train_data_loader, model, criterion, optimizer, device
+    )
+    valid_loss, valid_acc = train_model.evaluate(valid_data_loader, model, criterion, device)
+    metrics["train_losses"].append(train_loss)
+    metrics["train_accs"].append(train_acc)
+    metrics["valid_losses"].append(valid_loss)
+    metrics["valid_accs"].append(valid_acc)
+    if valid_loss < best_valid_loss:
+        best_valid_loss = valid_loss
+        torch.save(model.state_dict(), "lstm.pt")
+    print(f"epoch: {epoch}")
+    print(f"train_loss: {train_loss:.3f}, train_acc: {train_acc:.3f}")
+    print(f"valid_loss: {valid_loss:.3f}, valid_acc: {valid_acc:.3f}")
 
 
 
